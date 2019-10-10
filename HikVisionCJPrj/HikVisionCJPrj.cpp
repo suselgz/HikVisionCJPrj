@@ -35,8 +35,3 @@ void __stdcall CHook::ImageCallBackEx(unsigned char * pData, MV_FRAME_OUT_INFO_E
 	}
 }
 
-void __stdcall CHook::ExceptionCallBack(unsigned int nMsgType, void* pUser)
-{
-
-}
-

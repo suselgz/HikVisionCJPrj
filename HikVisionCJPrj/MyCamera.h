@@ -16,6 +16,7 @@ public:
     CMyCamera();
     ~CMyCamera();
 /********************************接口函数*************************************/
+	std::string GetLastErr();
 	//相机初始化
 	int Init(CallBackEx* hook);
 	//软触发
@@ -26,7 +27,6 @@ public:
 	int Close();
 /*****************************************************************************/
 private:
-
 	//遍历设备
     int EnumDevices(MV_CC_DEVICE_INFO_LIST* pstDevList);
 
@@ -93,8 +93,8 @@ private:
 
 private:
 
-    void*               m_hDevHandle;
-	
+    void*  m_hDevHandle;
+	int    m_errType;
 
 public:
     unsigned char*  m_pBufForSaveImage;         // 用于保存图像的缓存

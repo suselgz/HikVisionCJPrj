@@ -22,7 +22,6 @@ class CHook : public CallBackEx
 {
 public:
 	void __stdcall ImageCallBackEx(unsigned char * pData, MV_FRAME_OUT_INFO_EX* pFrameInfo, void* pUser);
-	void __stdcall  ExceptionCallBack(unsigned int nMsgType, void* pUser);
 protected:
 private:
 };

@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <windows.h>
 #include "opencv2/opencv.hpp"
-class QHikVisionTest : public QMainWindow
+class QHikVisionTest : public QMainWindow ,public CallBackEx
 {
 	Q_OBJECT
 
@@ -17,19 +17,10 @@ public:
 	void on_pushButton_Init_clicked();
 	void on_pushButton_softTrigger_clicked();
 	void on_pushButton_close_clicked();
-	void showErrMsg(unsigned int nMsgType, void* pUser);
 private:
+	void __stdcall ImageCallBackEx(unsigned char * pData, MV_FRAME_OUT_INFO_EX* pFrameInfo, void* pUser);
 	Ui::QHikVisionTestClass ui;
 	HikVisionPrj* m_Hik;
-	
-};
-class CHook : public CallBackEx
-{
-public:
-	void __stdcall ImageCallBackEx(unsigned char * pData, MV_FRAME_OUT_INFO_EX* pFrameInfo, void* pUser);
-	void __stdcall  ExceptionCallBack(unsigned int nMsgType, void* pUser);
-protected:
-private:
-	BYTE *m_imageRealdata=NULL;
+	BYTE *m_imageRealdata = NULL;
 	int m_nResizeBufSizeEx;
 };
